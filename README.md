@@ -24,5 +24,5 @@ Sigue estos pasos para clonar y ejecutar el proyecto en tu entorno local:
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [[https://github.com/VictorRivasDev/BOT_PHP.git](https://github.com/VictorRivasDev/BOT_PHP.git)](https://github.com/Victor-RivasDev/Gemini-Chat-PHP)
+   git clone [https://github.com/Victor-RivasDev/Gemini-Chat-PHP]
    cd BOT_PHP
