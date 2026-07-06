@@ -1,0 +1,18 @@
+body{
+    background-color: #86f4e5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    text-align: center;
+}
+.answer{
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-color: #910b0b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+}
