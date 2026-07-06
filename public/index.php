@@ -11,9 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $question){
     <head>
         <title>Chat con IA</title>
         <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Chat con IA</h1>
+        <h1>Chat con una IA</h1>
         <form method="POST">
             <label for="question">Pregunta a la IA:</label>
             <input type="text" id="question" name="question" required>
@@ -23,5 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $question){
         <strong>Respuesta: </strong>
             <?php echo htmlspecialchars($answer) ?>
         </p>
+
+        <p class="copyright">@copyright Victor Josue Rivas Zambrano </p>
     </body>
 </html>

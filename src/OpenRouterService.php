@@ -29,7 +29,7 @@ class OpenRouterService implements AiServiceInterface
             'json' => [
                 'model' => 'google/gemini-2.5-flash',
                 'messages' => [
-                    ['role' => 'system', 'content' => 'Eres un profesor de programación. Explica conceptos de manera clara y didáctica, respuestas cortas pero muy precisas explicando de forma basica y facil para que todos aprendan, siempre en español.'],
+                    ['role' => 'system', 'content' => 'Eres un agente de ayuda. Explica conceptos de manera clara y didáctica, respuestas cortas pero muy precisas explicando de forma basica y facil para que todos aprendan, siempre en español, sin tantos signos pero capaz de dejar lineas cuando sea necesario.'],
                     ['role' => 'user', 'content' => $question],
                 ],
                 'max_tokens' => 1000, // <--- AGREGASTE ESTA LÍNEA AQUÍ

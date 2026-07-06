@@ -1,18 +1,76 @@
-body{
+body {
     background-color: #86f4e5;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    /* Usamos flexbox en el body para estructurar la página de forma fluida */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 }
-h1{
+
+h1 {
     text-align: center;
+    margin-top: 20px;
+    padding: 0 10px;
 }
-.answer{
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Reemplazamos el margen fijo de 200px por un margen flexible */
+    margin: 40px auto 20px auto; 
+    width: 100%;
+    max-width: 600px;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* Si tienes un input de texto y un botón dentro del formulario, */
+/* esto asegurará que no se desborden en las pantallas móviles */
+form input[type="text"], 
+form textarea {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    font-size: 16px; /* Evita el zoom automático molesto en móviles */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.answer {
     background-color: #ffffff;
     border-radius: 5px;
-    border-color: #910b0b;
+    border: 1px solid #910b0b; /* Corregido: border-color necesita border-style para mostrarse */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
-    max-width: 600px;
+    width: 90%; /* Ocupa el 90% en pantallas chicas */
+    max-width: 600px; /* No pasa de 600px en pantallas grandes */
     padding: 20px;
+    box-sizing: border-box;
+    word-wrap: break-word; /* Evita que textos muy largos de la IA rompan el diseño */
+}
+
+.copyright {
+    text-align: center;
+    margin-top: auto; /* Empuja el copyright al final de la página de forma limpia */
+    padding: 20px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* --- Ajustes específicos para Teléfonos Móviles --- */
+@media (max-width: 768px) {
+    form {
+        margin-top: 20px; /* Reducimos aún más el espacio superior en el celular */
+    }
+    
+    h1 {
+        font-size: 24px; /* Un tamaño de título más adecuado para pantallas chicas */
+    }
+
+    .answer {
+        padding: 15px; /* Un poco menos de espacio interno para aprovechar la pantalla */
+    }
 }
