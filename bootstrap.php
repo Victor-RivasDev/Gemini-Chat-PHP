@@ -3,7 +3,8 @@
 require __DIR__ . '/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// Cambiamos load() por safeLoad() para soportar producción
+$dotenv->safeLoad();
 
 
 use App\FakeAiService;
@@ -14,3 +15,4 @@ use App\OpenRouterService;
 $aiService = new App\OpenRouterService();
 
 return new App\Chat($aiService);
+?>
