@@ -1,46 +1,156 @@
-body {
-  font-family: Arial, sans-serif;
+/* --- RESET Y BASE --- */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* Usamos flexbox en el body para estructurar la página de forma fluida */
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  color: white;
-  background-color: #222222;
 }
 
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  color: #e4e4e7;
+  background-color: #18181b;
+  overflow: hidden;
+}
+
+/* --- ENCABEZADO --- */
 h1 {
   text-align: center;
-  margin-top: 20px;
-  padding: 0 10px;
-  box-shadow: 0 0 20px 15px #222222;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem;
+  background-color: #121215;
+  border-bottom: 1px solid #27272a;
+  color: #f4f4f5;
+  flex-shrink: 0;
+}
+
+/* --- CONTENEDOR DE MENSAJES --- */
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  /* Mantengo tu genial máscara de gradiente para suavizar los bordes */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 3%, black 95%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 3%, black 95%, transparent 100%);
+}
+
+.chat-box::-webkit-scrollbar {
+  display: none; /* Oculta la barra pero mantiene scroll */
+}
+
+/* --- ESTILO DE LAS BURBUJAS DE CHAT --- */
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* Mensajes del Bot (Gemini) */
+.message.bot {
+  justify-content: flex-start;
+}
+
+.message.bot .bubble {
+  background-color: #27272a;
+  color: #e4e4e7;
+  border-radius: 1rem;
+  border-top-left-radius: 0.2rem;
+  border: 1px solid #3f3f46;
+}
+
+/* Mensajes del Usuario */
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.user .bubble {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-radius: 1rem;
+  border-top-right-radius: 0.2rem;
+}
+
+.bubble {
+  padding: 0.85rem 1.1rem;
+  max-width: 80%;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap; /* Mantiene saltos de línea devueltos por PHP */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.avatar-bot {
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.avatar-user {
+  background-color: #3f3f46;
+  color: #d4d4d8;
+}
+
+/* --- FORMULARIO Y FOOTER --- */
+footer {
+  background-color: #121215;
+  border-top: 1px solid #27272a;
+  padding: 1rem;
+  flex-shrink: 0;
 }
 
 form {
   display: flex;
   align-items: center;
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 3rem;
-  margin: 0 auto;
   width: 100%;
   max-width: 800px;
-  box-sizing: border-box;
+  margin: 0 auto;
 }
 
-/* Si tienes un input de texto y un botón dentro del formulario, */
-/* esto asegurará que no se desborden en las pantallas móviles */
-form input[type="text"],
-form textarea {
+form div {
   width: 100%;
-  box-sizing: border-box;
-  font-size: 16px; /* Evita el zoom automático molesto en móviles */
-  padding: 1rem;
-  color: white;
+  display: flex;
+  align-items: center;
+  background-color: #27272a;
+  border-radius: 1.5rem;
+  padding: 0.25rem 0.5rem 0.25rem 1rem;
+  border: 1px solid #3f3f46;
+  transition: border-color 0.2s;
+}
+
+form div:focus-within {
+  border-color: #2563eb;
+}
+
+form input[type="text"] {
+  width: 100%;
+  font-size: 0.95rem; /* Evita zoom molesto en iPhone/Android */
+  padding: 0.6rem 0;
+  color: #f4f4f5;
   border: none;
-  border-radius: 2rem;
   background-color: transparent;
 }
 
@@ -48,68 +158,36 @@ form input:focus {
   outline: none;
 }
 
-form div {
-  width: 100%;
-  padding: 0.3rem;
+button {
+  background-color: #f4f4f5;
+  color: #18181b;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* box-shadow: 0 0 20px 15px #222222; */
-  border-radius: 2rem;
-  background-color: #2b2b2b;
-}
-
-.answer {
-  color: white;
-  border-color: transparent;
-  margin-top: -1rem !important;
-  margin: auto;
-  width: 90%; /* Ocupa el 90% en pantallas chicas */
-  height: calc(100vh - 170px);
-  max-width: 800px; /* No pasa de 600px en pantallas grandes */
-  padding: 20px;
-  box-sizing: border-box;
-  word-wrap: break-word; /* Evita que textos muy largos de la IA rompan el diseño */
-  overflow-y: auto;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
-}
-
-.answer::-webkit-scrollbar {
-  display: none;
-}
-
-button {
-  margin-right: 0.3rem;
-  font-size: 1.5rem;
-  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
 }
 
 button:hover {
   cursor: pointer;
+  background-color: #ffffff;
 }
 
 .copyright {
   text-align: center;
-  font-size: 12px;
-  color: #555;
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 0.5rem;
+  font-size: 11px;
+  color: #71717a;
+  margin-top: 0.75rem;
 }
 
-/* --- Ajustes específicos para Teléfonos Móviles --- */
+/* --- ADAPTACIÓN MÓVIL --- */
 @media (max-width: 768px) {
-  form {
-    margin-top: 20px; /* Reducimos aún más el espacio superior en el celular */
-  }
-
-  h1 {
-    font-size: 24px; /* Un tamaño de título más adecuado para pantallas chicas */
-  }
-
-  .answer {
-    padding: 15px; /* Un poco menos de espacio interno para aprovechar la pantalla */
+  .bubble {
+    max-width: 88%;
   }
 }
