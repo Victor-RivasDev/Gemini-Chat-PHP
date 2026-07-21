@@ -1,54 +1,60 @@
-/* --- RESET Y BASE --- */
-* {
+/* RESET PARA EVITAR DESBORDAMIENTOS (SCROLL HORIZONTAL) */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+  height: 100dvh; /* Se adapta a la altura exacta de la pantalla en teléfonos */
+  overflow-x: hidden; /* Corta cualquier elemento que intente salirse de la pantalla */
 }
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   color: #e4e4e7;
   background-color: #18181b;
-  overflow: hidden;
 }
 
-/* --- ENCABEZADO --- */
+/* ENCABEZADO RESPONSIVO */
 h1 {
+  width: 100%;
   text-align: center;
   font-size: 1.1rem;
   font-weight: 600;
-  padding: 1rem;
+  padding: 1rem 0;
   background-color: #121215;
   border-bottom: 1px solid #27272a;
   color: #f4f4f5;
   flex-shrink: 0;
 }
 
-/* --- CONTENEDOR DE MENSAJES --- */
+/* CONTENEDOR DE CHAT */
 .chat-box {
   flex: 1;
   overflow-y: auto;
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
   
-  /* Mantengo tu genial máscara de gradiente para suavizar los bordes */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 3%, black 95%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 3%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 2%, black 98%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 2%, black 98%, transparent 100%);
 }
 
 .chat-box::-webkit-scrollbar {
-  display: none; /* Oculta la barra pero mantiene scroll */
+  display: none;
 }
 
-/* --- ESTILO DE LAS BURBUJAS DE CHAT --- */
+/* BURBUJAS */
 .message {
   display: flex;
   align-items: flex-start;
@@ -56,7 +62,6 @@ h1 {
   width: 100%;
 }
 
-/* Mensajes del Bot (Gemini) */
 .message.bot {
   justify-content: flex-start;
 }
@@ -69,7 +74,6 @@ h1 {
   border: 1px solid #3f3f46;
 }
 
-/* Mensajes del Usuario */
 .message.user {
   justify-content: flex-end;
 }
@@ -83,12 +87,11 @@ h1 {
 
 .bubble {
   padding: 0.85rem 1.1rem;
-  max-width: 80%;
+  max-width: 85%; /* Ajustado para pantallas de móvil */
   font-size: 0.95rem;
-  line-height: 1.5;
-  word-wrap: break-word;
-  white-space: pre-wrap; /* Mantiene saltos de línea devueltos por PHP */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  line-height: 1.4;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 .avatar {
@@ -98,7 +101,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: bold;
   flex-shrink: 0;
 }
@@ -114,11 +117,12 @@ h1 {
   color: #d4d4d8;
 }
 
-/* --- FORMULARIO Y FOOTER --- */
+/* FOOTER */
 footer {
+  width: 100%;
   background-color: #121215;
   border-top: 1px solid #27272a;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   flex-shrink: 0;
 }
 
@@ -136,18 +140,13 @@ form div {
   align-items: center;
   background-color: #27272a;
   border-radius: 1.5rem;
-  padding: 0.25rem 0.5rem 0.25rem 1rem;
+  padding: 0.2rem 0.4rem 0.2rem 1rem;
   border: 1px solid #3f3f46;
-  transition: border-color 0.2s;
-}
-
-form div:focus-within {
-  border-color: #2563eb;
 }
 
 form input[type="text"] {
   width: 100%;
-  font-size: 0.95rem; /* Evita zoom molesto en iPhone/Android */
+  font-size: 16px; /* Evita zoom automático en Safari/iOS */
   padding: 0.6rem 0;
   color: #f4f4f5;
   border: none;
@@ -162,32 +161,20 @@ button {
   background-color: #f4f4f5;
   color: #18181b;
   border: none;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  transition: background-color 0.2s;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: #ffffff;
+  flex-shrink: 0;
 }
 
 .copyright {
   text-align: center;
-  font-size: 11px;
+  font-size: 10px;
   color: #71717a;
-  margin-top: 0.75rem;
-}
-
-/* --- ADAPTACIÓN MÓVIL --- */
-@media (max-width: 768px) {
-  .bubble {
-    max-width: 88%;
-  }
+  margin-top: 0.4rem;
 }

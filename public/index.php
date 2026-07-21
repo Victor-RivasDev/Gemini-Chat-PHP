@@ -44,16 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Chat con IA</title>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Copia y pega esto dentro del <head> de tu index.php -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3C!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Free Theme) --%3E%3Cpath d='M320 0c17.7 0 32 14.3 32 32V96H472c26.5 0 48 21.5 48 48V288c0 26.5-21.5 48-48 48H168c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48H288V32c0-17.7 14.3-32 32-32zM504 384H136c-22.1 0-40 17.9-40 40s17.9 40 40 40H504c22.1 0 40-17.9 40-40s-17.9-40-40-40zM320 160c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64z' fill='%2360a5fa'/%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3C!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Free Theme) --%3E%3Cpath d='M320 0c17.7 0 32 14.3 32 32V96H472c26.5 0 48 21.5 48 48V288c0 26.5-21.5 48-48 48H168c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48H288V32c0-17.7 14.3-32 32-32zM504 384H136c-22.1 0-40 17.9-40 40s17.9 40 40 40H504c22.1 0 40-17.9 40-40s-17.9-40-40-40zM320 160c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64z' fill='%2360a5fa'/%3E%3C/svg%3E">   
 </head>
 
 <body>
     <header style="display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto; width: 100%; padding: 0 1rem;">
         <h1>Chat con una IA</h1>
         
-        <!-- Botón para borrar el historial si quieres empezar una nueva conversación -->
         <?php if (!empty($_SESSION['chat_history'])): ?>
             <form method="POST" style="position: static; margin: 0; width: auto;">
                 <input type="hidden" name="action" value="clear">
@@ -70,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="message bot">
                 <div class="avatar avatar-bot">AI</div>
                 <div class="bubble">
-                    ¡Hola! Soy un modelo de lenguaje. ¿En qué te puedo ayudar hoy?
+                    ¡Hola! Soy tu asistente de IA. ¿En qué puedo ayudarte hoy? Hazme cualquier pregunta y te responderé.
                 </div>
             </div>
         <?php else: ?>
